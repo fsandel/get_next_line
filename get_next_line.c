@@ -6,20 +6,19 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:46 by fsandel           #+#    #+#             */
-/*   Updated: 2022/10/28 19:51:02 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:26:31 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#define BUFFER_SIZE 5
 
 char	*get_next_line(int fd)
 {
 	char		*buffer;
-	int			BUFFER_SIZE;
 	int			i;
 	char		c;
 
-	BUFFER_SIZE = 5;
 	buffer = malloc(BUFFER_SIZE);
 	i = 0;
 	while (1)
