@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:46 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/01 14:24:56 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/01 14:43:06 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*get_next_line(int fd)
 	static char *left = NULL;
 	char		*temp;
 
+	//printf("\n%s\n", left);
 	if (ft_strchr(left, '\n'))
 	{
 		output = ft_find_return(left);
