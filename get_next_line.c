@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:46 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/01 14:43:06 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/01 14:54:32 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*get_next_line(int fd)
 	static char *left = NULL;
 	char		*temp;
 
-	//printf("\n%s\n", left);
 	if (ft_strchr(left, '\n'))
 	{
 		output = ft_find_return(left);
@@ -52,7 +51,7 @@ char	*ft_read_line(int fd)
 	buffer[bytes_read] = 0;
 	output = ft_join_free(output, buffer);
 	
-	while (bytes_read > 0 && !ft_strchr(output, '\n'))
+	while (bytes_read == BUFFER_SIZE && !ft_strchr(output, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		buffer[bytes_read] = 0;
@@ -76,7 +75,8 @@ char	*ft_find_return(char *left)
 {
 	char	*output;
 	int		i;
-
+	if (ft_strchr(left, '\n'))
+		return (left);
 	i = 0;
 	while (left[i] != '\n')
 		i++;
