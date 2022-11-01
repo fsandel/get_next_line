@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:46 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/01 11:43:55 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/01 12:04:53 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ char	*get_next_line(int fd)
 	char		*output;
 	static char	*leftovers = NULL;
 	int			byte_read;
-	//char		*temp;
+	char		*temp;
 
 	byte_read = 1;
 	if (ft_strchr(leftovers, '\n'))
 	{
+		temp = leftovers;
 		output = ft_cut_newline(leftovers);
-		leftovers = ft_leftys(leftovers);
+		leftovers = ft_leftys(temp);
+		free(temp);
 		return (output);
 	}
 	output = leftovers;
@@ -36,8 +38,10 @@ char	*get_next_line(int fd)
 		output = ft_strjoin(output, buffer);
 		free(buffer);
 	}
+	temp = output;
 	leftovers = ft_leftys(output);
-	output = ft_cut_newline(output);
+	output = ft_cut_newline(temp);
+	//free(temp);
 	return (output);
 
 }
@@ -61,6 +65,7 @@ char	*ft_cut_newline(char *buffer)
 			break ;
 	}
 	output[i] = 0;
+	free(buffer);
 	return (output);
 }
 
