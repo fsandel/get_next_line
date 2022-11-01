@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:46 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/01 10:36:34 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/01 11:43:55 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,10 @@ char	*get_next_line(int fd)
 	{
 		buffer = ft_calloc(BUFFER_SIZE + 1, 1);
 		byte_read = read(fd, buffer, BUFFER_SIZE);
-		if (byte_read < 1)
-		{
-			free(buffer);
-			return (output);
-		}
 		output = ft_strjoin(output, buffer);
 		free(buffer);
 	}
-	leftovers = ft_strchr(output, '\n') + 1;
+	leftovers = ft_leftys(output);
 	output = ft_cut_newline(output);
 	return (output);
 
@@ -75,6 +70,8 @@ char *ft_leftys(char *str)
 	int		i;
 	int		j;
 
+	if (!ft_strchr(str, '\n'))
+		return (NULL);
 	i = 0;
 	while(str[i] != '\n')
 		i++;
