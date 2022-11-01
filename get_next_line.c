@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:46 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/01 16:13:12 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/01 16:15:33 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*get_next_line(int fd)
 	{
 		output = ft_find_return(temp);
 		left = ft_strchr(temp, '\n') + 1;
-		//free(temp);
+		free(temp);
 	}
 	else
 		output = temp;
