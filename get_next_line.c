@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:46 by fsandel           #+#    #+#             */
-/*   Updated: 2022/10/31 18:39:37 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/01 10:36:34 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,18 @@ char	*get_next_line(int fd)
 	char		*output;
 	static char	*leftovers = NULL;
 	int			byte_read;
-	char		*temp;
+	//char		*temp;
 
 	byte_read = 1;
 	if (ft_strchr(leftovers, '\n'))
 	{
-		temp = ft_strchr(leftovers, '\n') + 1;
 		output = ft_cut_newline(leftovers);
-		leftovers = NULL;
-		free(leftovers);
-		leftovers = temp;
+		leftovers = ft_leftys(leftovers);
 		return (output);
 	}
 	output = leftovers;
 	leftovers = NULL;
-	while (byte_read > 0)
+	while (byte_read > 0 && !ft_strchr(output, '\n'))
 	{
 		buffer = ft_calloc(BUFFER_SIZE + 1, 1);
 		byte_read = read(fd, buffer, BUFFER_SIZE);
@@ -43,13 +40,9 @@ char	*get_next_line(int fd)
 		}
 		output = ft_strjoin(output, buffer);
 		free(buffer);
-		if (ft_strchr(output, '\n'))
-		{
-			leftovers = ft_strchr(output, '\n') + 1;
-			output = ft_cut_newline(output);
-			return (output);
-		}
 	}
+	leftovers = ft_strchr(output, '\n') + 1;
+	output = ft_cut_newline(output);
 	return (output);
 
 }
@@ -76,12 +69,25 @@ char	*ft_cut_newline(char *buffer)
 	return (output);
 }
 
-char	*ft_join_free(char *first, char *second)
+char *ft_leftys(char *str)
 {
 	char	*output;
+	int		i;
+	int		j;
 
-	output = ft_strjoin(first, second);
-	free(first);
-	free(second);
-	return (output);
+	i = 0;
+	while(str[i] != '\n')
+		i++;
+	i++;
+	j = i;
+	while(str[j])
+		j++;
+	output = ft_calloc(j - i + 1, 1);
+	while (str[i])
+	{
+		output[i] = str[i];
+		i++;
+	}
+	//free(str);
+	return(output);
 }
