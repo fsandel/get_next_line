@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:49 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/01 15:55:50 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/01 16:35:23 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 char	*get_next_line(int fd);
 char	*ft_join_free(char *str, char *buffer);
-char	*ft_read_line(int fd);
+char	*ft_read_line(int fd, char *temp);
 char	*ft_find_return(char *left);
 
 char	*ft_strjoin(char const *first, char const *second);

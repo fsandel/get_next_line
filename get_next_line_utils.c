@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:36 by fsandel           #+#    #+#             */
-/*   Updated: 2022/10/31 14:55:17 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/01 16:38:46 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ char	*ft_strdup(const char *s)
 	char	*str;
 	int		i;
 
+	if (s == NULL)
+		return (NULL);
 	str = ft_calloc(ft_strlen(s) + 1, 1);
 	if (!str)
 		return (NULL);

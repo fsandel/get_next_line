@@ -6,14 +6,14 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 14:34:39 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/01 16:17:56 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/01 16:39:04 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 AFLAGS		= ar -rcs
-BFLAGS		= -D BUFFER_SIZE=42
+BFLAGS		= -D BUFFER_SIZE=1
 NAME		= ft_printf.out
 MAIN		= main.c
 
