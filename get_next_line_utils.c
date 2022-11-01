@@ -6,23 +6,11 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:36 by fsandel           #+#    #+#             */
-/*   Updated: 2022/10/31 10:05:43 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/10/31 14:55:17 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	ft_output_size(char *buffer, int size)
-{
-	int	i;
-
-	i = 0;
-	while (buffer[i] != '\n' && i < size)
-	{
-		i++;
-	}
-	return (i);
-}
 
 char	*ft_strjoin(char const *first, char const *second)
 {
@@ -49,25 +37,6 @@ char	*ft_strjoin(char const *first, char const *second)
 	return (joined);
 }
 
-
-char	*ft_cut_newline(char *buffer)
-{
-	int		i;
-	int		len;
-	char	*output;
-
-	len = ft_strlen(buffer);
-	output = ft_calloc(len + 1, 1);
-	i = 0;
-	while (buffer[i] != '\n')
-	{
-		output[i] = buffer[i];
-		i++;
-	}
-	free(buffer);
-	return (output);
-}
-
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
@@ -83,7 +52,7 @@ size_t	ft_strlen(const char *str)
 char	*ft_calloc(size_t nitems, size_t size)
 {
 	char	*ptr;
-	int		i;
+	size_t	i;
 
 	if (size && (SIZE_MAX / size < nitems))
 		return (NULL);
@@ -102,6 +71,8 @@ char	*ft_strchr(char const *str, int c)
 	unsigned char	chr;
 	char			*strr;
 
+	if (str == NULL)
+		return (0);
 	strr = (char *)str;
 	chr = (unsigned char)c;
 	length = ft_strlen(strr);
@@ -115,7 +86,6 @@ char	*ft_strchr(char const *str, int c)
 	return (strr);
 }
 
-//duplicates s and returns it
 char	*ft_strdup(const char *s)
 {
 	char	*str;
