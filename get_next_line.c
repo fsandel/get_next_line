@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:46 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/01 16:47:15 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/01 16:48:46 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ char	*ft_read_line(int fd, char *left)
 	char	buffer[BUFFER_SIZE + 1];
 	char	*output;
 
-	output = ft_strdup(left);
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read < 1)
 		return (NULL);
 	buffer[bytes_read] = 0;
+	output = ft_strdup(left);
 	output = ft_join_free(output, buffer);
 	while (bytes_read == BUFFER_SIZE && !ft_strchr(output, '\n'))
 	{
