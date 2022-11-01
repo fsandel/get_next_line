@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:32:46 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/01 16:06:41 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/01 16:13:12 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*ft_find_return(char *left)
 {
 	char	*output;
 	int		i;
-	if (ft_strchr(left, '\n'))
+	if (!ft_strchr(left, '\n'))
 		return (left);
 	i = 0;
 	while (left[i] != '\n')
